@@ -1,7 +1,7 @@
 {
-  "name": "firstpackage",
-  "version": "1.0.5",
-  "description": "wow",
+  "name": "YouniversePackage",
+  "version": "1.1.0",
+  "description": "Initializes Javascript through Github",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/youniversehq/YouniverseHQ.git"
   },
-  "author": "",
+  "author": "Ryan Wilcox",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/youniversehq/YouniverseHQ/issues"
