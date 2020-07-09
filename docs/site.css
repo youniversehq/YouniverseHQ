@@ -13,7 +13,9 @@ body {
     padding-right: 15px;
     border-radius: 0 0 5px 5px;
 }
-
+p {
+	background-color: #BA55D3;
+}
 h1 {
     font-family: Georgia, serif;
     border-bottom: 3px solid #BA55D3;
