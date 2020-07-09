@@ -1,3 +1,10 @@
+html {
+	position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
 body {
 	background-image: url("homepagebkg.jpg");
 	background-size: 100%, 100%;
@@ -25,11 +32,15 @@ header {
 h1 {
 	color: blue;
 }
-body {
-  background-color: black;
-  font-family: cursive;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: Black;
+  color: Purple;
+  text-align: Right;
 }
-
 .glow {
   font-size: 75px;
   text-align: center;
@@ -45,13 +56,39 @@ body {
     text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
   }
 }
-
-.trapezoid {
-	border-bottom: 50px solid #555;
+.triangleDown {
+	width: 0;
+	height: 0;
 	border-left: 25px solid transparent;
 	border-right: 25px solid transparent;
+	border-top: 50px solid purple;
+}
+.smallGlow {
+  font-size: 40px;
+  text-align: center;
+  color: #FF00FF;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+} @-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+.trapezoid {
+	border-bottom: 100px solid blue;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
 	height: 0;
-	width: 125px;
+	width: 250px;
+}
+.rectangle {
+  height: 50px;
+  width: 100%;
+  background-image: linear-gradient(purple, black);
 }
 
 .topnav {
@@ -68,7 +105,6 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
-
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: purple;
@@ -82,25 +118,21 @@ body {
 }
 
 
+
 table {
-    width:100%;
+	text-align: center;
+	color: black;
+	size: 100%;
 }
 
 table, th , td {
-    border: 1px solid purple;
+    border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
 }
 
 th {
-    text-align: left;
-}
-
-table tr:nth-child(odd) {
-    background-color: #BA55D3;
-}
-table tr:nth-child(even) {
-    background-color: #BA55D3;
+    
 }
 
 ul#menu {
