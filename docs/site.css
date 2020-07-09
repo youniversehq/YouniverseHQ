@@ -14,13 +14,16 @@ body {
     border-radius: 0 0 5px 5px;
 }
 p {
-	background-color: #BA55D3;
+	color: #4B0082;
 }
-h1 {
+header {
     font-family: Georgia, serif;
     border-bottom: 3px solid #BA55D3;
     color: purple;
     font-size: 30px;
+}
+h1 {
+	color: blue;
 }
 /* Add a black background color to the top navigation */
 .topnav {
