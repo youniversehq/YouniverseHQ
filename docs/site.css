@@ -1,7 +1,7 @@
 body {
     font-family: "Trebuchet MS", Verdana, sans-serif;
     font-size: 16px;
-    color: #696969;
+    color: #4B0082;
     padding: 3px;
 }
 #spacebackground {
@@ -19,7 +19,7 @@ body {
 h1 {
     font-family: Georgia, serif;
     border-bottom: 3px solid #cc9900;
-    color: #996600;
+    color: #FF00FF;
     font-size: 30px;
 }
 
@@ -29,7 +29,7 @@ table {
 }
 
 table, th , td {
-    border: 1px solid grey;
+    border: 1px solid purple;
     border-collapse: collapse;
     padding: 5px;
 }
@@ -39,10 +39,10 @@ th {
 }
 
 table tr:nth-child(odd) {
-    background-color: #f1f1f1;
+    background-color: #BA55D3;
 }
 table tr:nth-child(even) {
-    background-color: #ffffff;
+    background-color: #BA55D3;
 }
 
 ul#menu {
@@ -58,11 +58,11 @@ ul#menu li {
 ul#menu li a {
     padding: 10px 20px;
     text-decoration: none;
-    color: #696969;
+    color: #4B0082;
     border-radius: 4px 4px 0 0;
 }
 
 ul#menu li a:hover {
     color: white;
-    background-color: black;
+    background-color: purple;
 }
