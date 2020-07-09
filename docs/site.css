@@ -4,7 +4,7 @@ body {
     color: #4B0082;
     padding: 3px;
 }
-#spacebackground {
+.spacebackground {
 	background: url(homepagebkg.jpg);
 	background-repeat: no-repeat;
 	background-size: auto;
