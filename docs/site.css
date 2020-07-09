@@ -1,5 +1,6 @@
 body {
 	background-image: url("homepagebkg.jpg");
+	background-size: auto;
 	height: 770px;
 	width: 1350px;
     font-family: "Trebuchet MS", Verdana, sans-serif;
