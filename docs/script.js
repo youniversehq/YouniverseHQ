@@ -4,6 +4,6 @@ document.getElementById("footer").innerHTML =
 document.getElementById("pageNav").innerHTML =
 "<ul id='menu'>" +
 "<li><a href='index.html'>Home</a></li>" +
-"<li><a href='play.html'>Data</a></li>" +
-"<li><a href='Guide.html'>About</a></li>" +
+"<li><a href='play.html'>Play</a></li>" +
+"<li><a href='Guide.html'>Guide</a></li>" +
 "</ul>";
