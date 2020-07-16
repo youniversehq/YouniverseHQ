@@ -1,4 +1,6 @@
 var myGamePiece;
+var screenHeight = screen.innerHeight;
+var screenWidth = screen.innerWidth;
 
 function startGame() {
   myGamePiece = new component(30, 30, "red", 10, 120);
