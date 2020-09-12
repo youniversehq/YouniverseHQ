@@ -1,26 +1,199 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>play</title>
   <link href="site.css" rel="stylesheet">
+<style>
+canvas {
+    border: 1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
 </head>
+<body onload="startGame()">
+<script>
+var myGamePiece;
+var myObstacles = [];
+function startGame() {
+    myGameArea.start();
+    //buttons
+    myUpBtn = new component(30, 30, "blue", 50, 10);
+    myDownBtn = new component(30, 30, "blue", 50, 70);
+    myLeftBtn = new component(30, 30, "blue", 20, 40);
+    myRightBtn = new component(30, 30, "blue", 80, 40); 
+    //pieces
+    myGamePiece = new component(30, 30, "red", 10, 120);
+}
 
-<body>
+var myGameArea = {
+    //CANVAS
+    canvas : document.createElement("canvas"),
+    start : function() {
+        //preparing the game canvas
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        //this runs the game
+        this.interval = setInterval(updateGameArea, 20);
+        //LISTENING STUDIO
+        //
+        window.addEventListener('mousedown', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+    })
+        window.addEventListener('mouseup', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+    })
+        window.addEventListener('touchstart', function (e) {
+            myGameArea.x = e.pageX;
+            myGameArea.y = e.pageY;
+    })
+        window.addEventListener('touchend', function (e) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+    })
+        window.addEventListener('keydown', function (e) {
+            myGameArea.keys = (myGameArea.keys || []);
+            myGameArea.keys[e.keyCode] = true;
+    })   
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = false;
+    })
+},
+    clear : function() { this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+},
+    stop : function() { clearInterval(this.interval);
+}
+} //END MYGAMEAREA HERE
 
-<div class="topnav">
-  <a href="index.html">Home</a>
-  <a class="active" href="play.html">Play</a>
-  <a href="guide.html"> Guide </a>
-  </div>
-
-<div id="main">
-  <h1>Play</h1>
-  <div id="id01"></div>
-  <footer id="footer"></footer>
-</div>
-
-<script src="script.js"></script>
+//CHOOSE HOW MANY FRAMES TO WAIT BETWEEN ACTIONS
+function everyinterval(n) {
+  if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+  return false;
+}
+function component(width, height, color, x, y) {
+ //PLAYER ENVIRONMENT VARIABLES
+  this.width = width; 
+  this.height = height;
+  this.x = x;
+  this.y = y;
+  this.speedX = 0;
+  this.speedY = 0;
+  //UPDATE PLAYER OBJECT
+  this.update = function(){
+    ctx = myGameArea.context;
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+  }
+  //COMPONENT RESPONDS TO BUTTON CLICK
+  this.clicked = function() {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var clicked = true;
+    if ((mybottom < myGameArea.y) || (mytop > myGameArea.y) || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+      clicked = false;
+    }
+    return clicked;
+  }
+  this.newPos = function() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
+  //collision mechanics
+  this.crashWith = function(otherobj) {
+  //gather data about where this.boundaries are
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+  //data for object being collided with boundaries
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) || 
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+    }
+    return crash;
+  }
+}
+//UPDATE GAME AREA
+function updateGameArea() {
+//ends game if collision 
+var x, y;
+  for (i = 0; i < myObstacles.length; i += 1) {
+    if (myGamePiece.crashWith(myObstacles[i])) {
+      myGameArea.stop();
+      return;
+    }
+    }
+  //continue game
+  myGameArea.clear();
+   //THE LAND BETWEEN FRAMES
+   
+  
+  //THINGS THAT HAPPEN REPEATEDLY
+  myGameArea.frameNo += 1;
+  if (myGameArea.frameNo == 1 || everyinterval(150)) {
+    x = myGameArea.canvas.width;
+    y = myGameArea.canvas.height - 200
+    myObstacles.push(new component(10, 200, "green", x, y));
+  }
+  for (i = 0; i < myObstacles.length; i += 1) {
+    myObstacles[i].x += -1;
+    myObstacles[i].update();
+  }
+  //ONSCREEN BUTTON MOVEMENT
+  if (myGameArea.x && myGameArea.y) {
+    if (myUpBtn.clicked()) {
+      myGamePiece.y -= 1;
+    }
+    if (myDownBtn.clicked()) {
+      myGamePiece.y += 1;
+    }
+    if (myLeftBtn.clicked()) {
+      myGamePiece.x += -1;
+    }
+    if (myRightBtn.clicked()) {
+      myGamePiece.x += 1;
+    }
+  }
+  //BUTTONS DO THEIR THING
+  myUpBtn.update();
+  myDownBtn.update();
+  myLeftBtn.update();
+  myRightBtn.update(); 
+  myObstacle.update();
+  myGamePiece.speedX = 0;
+  myGamePiece.speedY = 0;
+  //KEYBOARD MOVEMENT
+  if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -1; }
+  if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 1; }
+  if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY = -1; }
+  if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY = 1; }
+  myGamePiece.newPos();
+  //END OF THE LAND BETWEEN FRAMES
+  myGamePiece.update();
+  }
+</script>
+<button onclick="moveup()" onmouseup="stopMove()" ontouchstart="moveup()">UP</button>
+<button onclick="movedown()" onmouseup="stopMove()" ontouchstart="movedown()">DOWN</button>
+<button onclick="moveleft()" onmouseup="stopMove()" ontouchstart="moveleft()">LEFT</button>
+<button onclick="moveright()" onmouseup="stopMove()" ontouchstart="moveright()">RIGHT</button>  
+<p>Youniverse Alpha Development Stages</p>
 
 </body>
+</html>
+
 </html> 
