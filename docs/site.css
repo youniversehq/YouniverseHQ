@@ -6,6 +6,8 @@ html {
     right:0;
 }
 body {
+   size:100%;
+   text-align: center;
 	background-image: url("homepagebkg.jpg");
 	background-size: 100%, 100%;
 	height: 100%;
@@ -21,6 +23,8 @@ body {
     border-radius: 0 0 5px 5px;
 }
 p {
+    background-color: black;
+    font: "Times New Roman";
 	color: black;
 	border-color: white;
 	border-size: 2px;
@@ -32,7 +36,7 @@ header {
     color: white;
     font-size: 30px;
 }
-.footer {
+footer {
   position: fixed;
   left: 0;
   bottom: 0;
