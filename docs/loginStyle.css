@@ -1,9 +1,6 @@
 html {
   height: 100%;
 }
-main {
-    background-image: "tunnel.jpg";
-}
 body {
   height: 100%;
   margin: 0;
@@ -23,7 +20,9 @@ body {
   border-radius: 7px;
   box-shadow: 0px 0px 5px 2px black;
 }
-
+main {
+    background-image: ("retro.jpg");
+}
 #login-error-msg-holder {
   width: 100%;
   height: 100%;
@@ -59,7 +58,11 @@ body {
 .login-form-field::placeholder {
   color: #3a3a3a;
 }
-
+.smallGlow {
+  font-size: 40px;
+  text-align: center;
+  color: #FFD700;
+}
 .login-form-field {
   border: none;
   border-bottom: 1px solid #3a3a3a;
