@@ -6,7 +6,6 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
-  background-image: url('retro.jpg');
 }
 
 #main-holder {
