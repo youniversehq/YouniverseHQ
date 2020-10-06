@@ -4,20 +4,37 @@
 <head>
   <title>play</title>
   <link href="site.css" rel="stylesheet">
-<style>
-
-</style>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="loginStyle.css">
+  <script defer src="login-page.js"></script>
 </head>
+
 <body>
+  <main id="main-holder">
+    <h1 id="login-header">Login</h1>
+    
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div>
+    
+    <form id="login-form">
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+      <input type="submit" value="Login" id="login-form-submit">
+    </form>
+  
 <div class="topnav">
   <a href="index.html">Home</a>
   <a class="active" href="play.html">Play</a>
   <a href="guide.html">Guide</a>
 </div>
+</main>
 <script src="startGame.js"></script>
 <script type="text/javascript">
         startGame();
-        
 </script>
 <div class="footer">@2020 YouniverseHQ Github Project - Alpha Stages</div>
 </body>
