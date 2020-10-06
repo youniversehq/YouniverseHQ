@@ -8,6 +8,7 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
+  background-image: url("retro.jpg");
 }
 
 #main-holder {
@@ -19,9 +20,6 @@ body {
   background-color: white;
   border-radius: 7px;
   box-shadow: 0px 0px 5px 2px black;
-}
-main {
-    background-image: ("retro.jpg");
 }
 #login-error-msg-holder {
   width: 100%;
